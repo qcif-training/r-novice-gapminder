@@ -290,87 +290,82 @@ even better.
 > expectancy and which has the shortest average life expectancy?
 >
 > > ## Solution to Challenge 2
-~~~
-{: .language-r}
 > >
-> >~~~
+> > ~~~
 > >lifeExp_bycountry <- gapminder %>%
 > >    group_by(country) %>%
 > >    summarize(mean_lifeExp = mean(lifeExp))
 > >lifeExp_bycountry %>%
 > >    filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
-> >~~~
-> >{: .language-r}
-> >
-> >
-> >
-> >~~~
+> > ~~~
+> > {: .language-r}
+> > ~~~
 > ># A tibble: 2 × 2
 > >  country      mean_lifeExp
 > >  <chr>               <dbl>
 > >1 Iceland              76.5
 > >2 Sierra Leone         36.8
-> >~~~
-> >{: .output}
+> > ~~~
+> > {: .output}
 > Another way to do this is to use the `dplyr` function `arrange()`, which
 > arranges the rows in a data frame according to the order of one or more
 > variables from the data frame.  It has similar syntax to other functions from
 > the `dplyr` package. You can use `desc()` inside `arrange()` to sort in
 > descending order.
 > >
-> >~~~
+> > ~~~
 > >lifeExp_bycountry %>%
 > >    arrange(mean_lifeExp) %>%
 > >    head(1)
-> >~~~
-> >{: .language-r}
+> > ~~~
+> > {: .language-r}
 > >
 > >
 > >
-> >~~~
+> > ~~~
 > ># A tibble: 1 × 2
 > >  country      mean_lifeExp
 > >  <chr>               <dbl>
 > >1 Sierra Leone         36.8
-> >~~~
-> >{: .output}
+> > ~~~
+> > {: .output}
 > >
 > >
 > >
-> >~~~
+> > ~~~
 > >lifeExp_bycountry %>%
 > >    arrange(desc(mean_lifeExp)) %>%
 > >    head(1)
-> >~~~
-> >{: .language-r}
+> > ~~~
+> > {: .language-r}
 > >
 > >
 > >
-> >~~~
+> > ~~~
 > ># A tibble: 1 × 2
 > >  country mean_lifeExp
 > >  <chr>          <dbl>
 > >1 Iceland         76.5
-> >~~~
-> >{: .output}
+> > ~~~
+> > {: .output}
 > Alphabetical order works too
 > >
-> >~~~
+> > ~~~
 > >lifeExp_bycountry %>%
 > >    arrange(desc(country)) %>%
 > >    head(1)
-> >~~~
-> >{: .language-r}
+> > ~~~
+> > {: .language-r}
 > >
 > >
 > >
-> >~~~
+> > ~~~
 > ># A tibble: 1 × 2
 > >  country  mean_lifeExp
 > >  <chr>           <dbl>
 > >1 Zimbabwe         52.7
-> >~~~
-> >{: .output}
+> > ~~~
+> > {: .output}
 > {: .solution}
 {: .challenge}
 
