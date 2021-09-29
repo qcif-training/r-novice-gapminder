@@ -257,11 +257,10 @@ original data frame into multiple pieces, then we can run functions
 gdp_bycontinents <- gapminder %>%
     group_by(continent) %>%
     summarize(mean_gdpPercap = mean(gdpPercap))
-
-
-![Diagram illustrating the use of group by and summarize together to create a new variable](../fig/13-dplyr-fig3.png)
 ~~~
 {: .language-r}
+
+![Diagram illustrating the use of group by and summarize together to create a new variable](../fig/13-dplyr-fig3.png)
 
 
 ~~~
