@@ -264,12 +264,6 @@ gdp_bycontinents <- gapminder %>%
 {: .language-r}
 
 
-
-~~~
-Error: attempt to use zero-length variable name
-~~~
-{: .error}
-
 ~~~
 continent mean_gdpPercap
      <fctr>          <dbl>
@@ -278,7 +272,8 @@ continent mean_gdpPercap
 3      Asia       7902.150
 4    Europe      14469.476
 5   Oceania      18621.609
-```
+~~~
+{: .output}
 
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.
