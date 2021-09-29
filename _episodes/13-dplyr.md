@@ -211,38 +211,31 @@ europe_lifeExp_2007 <- gapminder %>%
 > >                            filter(continent == "Africa") %>%
 > >                            select(year, country, lifeExp)
 > >~~~
-> >> {: .solution}
-> >{: .challenge}
-> >
-> >As with last time, first we pass the gapminder data frame to the `filter()`
-> >function, then we pass the filtered version of the gapminder data frame to the
-> >`select()` function. **Note:** The order of operations is very important in this
-> >case. If we used 'select' first, filter would not be able to find the variable
-> >continent since we would have removed it in the previous step.
-> >
-> >## Using group_by()
-> >
-> >Now, we were supposed to be reducing the error prone repetitiveness of what can
-> >be done with base R, but up to now we haven't done that since we would have to
-> >repeat the above for each continent. Instead of `filter()`, which will only pass
-> >observations that meet your criteria (in the above: `continent=="Europe"`), we
-> >can use `group_by()`, which will essentially use every unique criteria that you
-> >could have used in filter.
-> >~~~
-> >{: .language-r}
-> >
-> >
-> >
-> >~~~
-> >Error: attempt to use zero-length variable name
-> >~~~
-> >{: .error}
+> >{: .solution}
+>{: .challenge}
+
+As with last time, first we pass the gapminder data frame to the `filter()`
+function, then we pass the filtered version of the gapminder data frame to the
+`select()` function. **Note:** The order of operations is very important in this
+case. If we used 'select' first, filter would not be able to find the variable
+continent since we would have removed it in the previous step.
+
+## Using group_by()
+
+Now, we were supposed to be reducing the error prone repetitiveness of what can
+be done with base R, but up to now we haven't done that since we would have to
+repeat the above for each continent. Instead of `filter()`, which will only pass
+observations that meet your criteria (in the above: `continent=="Europe"`), we
+can use `group_by()`, which will essentially use every unique criteria that you
+could have used in filter.
 
 ~~~
 str(gapminder)
 
 str(gapminder %>% group_by(continent))
-```
+~~~
+{: .language-r}
+
 You will notice that the structure of the data frame where we used `group_by()`
 (`grouped_df`) is not the same as the original `gapminder` (`data.frame`). A
 `grouped_df` can be thought of as a `list` where each item in the `list`is a
@@ -259,21 +252,12 @@ variable(s) by using functions that repeat for each of the continent-specific
 data frames. That is to say, using the `group_by()` function, we split our
 original data frame into multiple pieces, then we can run functions
 (e.g. `mean()` or `sd()`) within `summarize()`.
-~~~
-{: .language-r}
-
-
-
-~~~
-Error: attempt to use zero-length variable name
-~~~
-{: .error}
 
 ~~~
 gdp_bycontinents <- gapminder %>%
     group_by(continent) %>%
     summarize(mean_gdpPercap = mean(gdpPercap))
-```
+
 
 ![Diagram illustrating the use of group by and summarize together to create a new variable](../fig/13-dplyr-fig3.png)
 ~~~
