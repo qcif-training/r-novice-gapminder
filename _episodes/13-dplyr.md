@@ -206,13 +206,13 @@ europe_lifeExp_2007 <- gapminder %>%
 >
 > > ## Solution to Challenge 1
 > >
-> >~~~
+> > ~~~
 > >year_country_lifeExp_Africa <- gapminder %>%
 > >                            filter(continent == "Africa") %>%
 > >                            select(year, country, lifeExp)
-> >~~~
-> >{: .solution}
->{: .challenge}
+> > ~~~
+> > {: .solution}
+> {: .challenge}
 
 As with last time, first we pass the gapminder data frame to the `filter()`
 function, then we pass the filtered version of the gapminder data frame to the
